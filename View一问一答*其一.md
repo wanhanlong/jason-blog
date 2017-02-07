@@ -1,4 +1,6 @@
-##View坐标
+***
+View坐标
+***
 ###1、View的坐标参数 主要有哪些？分别有什么注意的要点？
 **答：**   
 几个主要坐标参数是：   
@@ -105,7 +107,9 @@ View的边界直接发生了变化，又因为View和他的子View的相对位�
 5）view.measure(int widthMeasureSpec,int heightMeasureSpec)
 手动对view进行measure来得到view的宽高
 
-##View滑动
+***
+View滑动
+***
 ###1、让view滑动总共有几种方式，分别要注意什么？都适用于那些场景？
 1）通过view本身提供的scrollTo和scrollBy来滑动；但是只能滑动view的内容 不可以滑动view本身。比如textview 调用这2个方法  滑动的就是显示出来的字的内容。[详情查看](http://www.jianshu.com/p/2b48551d5319)   
 2）用动画来滑动View；
@@ -156,4 +160,3 @@ Scroller就是用于 让view有滑动渐变效果的。
 
 喜欢就关注我(ˇˍˇ) 
 更多内容请关注 [ 我的专题 ](http://www.jianshu.com/collection/bcc2c1ba8378)
-
