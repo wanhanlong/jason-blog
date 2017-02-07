@@ -1,4 +1,3 @@
-***
 View坐标
 ***
 ###1、View的坐标参数 主要有哪些？分别有什么注意的要点？
@@ -107,7 +106,7 @@ View的边界直接发生了变化，又因为View和他的子View的相对位�
 5）view.measure(int widthMeasureSpec,int heightMeasureSpec)
 手动对view进行measure来得到view的宽高
 
-***
+
 View滑动
 ***
 ###1、让view滑动总共有几种方式，分别要注意什么？都适用于那些场景？
