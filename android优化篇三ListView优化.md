@@ -289,7 +289,7 @@ private void updateView(int itemIndex) {
 不需要了
 	* 在 ListView 中取图片时也不要直接拿个路径去取图片，而是以 WeakReference（使用WeakReference 代替强引用。比如可以使用 WeakReference mContextRef）、SoftReference、WeakHashMap 等的来存储图片信息。
 	* 在 getView 中做图片转换时，产生的中间变量一定及时释放
-* 异步加载图片基本思想：
+* 异步加载图片基本思想：   
 1）、 先从内存缓存中获取图片显示（内存缓冲）   
 2）、获取不到的话从 SD 卡里获取（SD 卡缓冲）    
 3）、都获取不到的话从网络下载图片并保存到 SD 卡同时加入内存并显示（视情况看是否要显示）   
