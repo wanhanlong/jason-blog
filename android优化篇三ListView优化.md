@@ -242,6 +242,62 @@ android:descendantFocusability="blocksDescendants"
 ######10. [ScrollView、ListView剖析 - 上下拉伸回弹阻尼效果](http://www.jianshu.com/p/834e522d02dc)
 ######11. [自定义控件-下拉刷新和上拉加载的listView](http://www.jianshu.com/p/cf4a77727d68)
 
+######12、ListView 如何显示多种类型的Item
+ListView 显示的每个条目都是通过 baseAdapter 的 getView(int position, View convertView, ViewGroup parent)来展示的,理 论上我们完全可以让每个条目都是不同类型的 view。 比如:从服务器拿回一个标识为 id=1,那么当 id=1 的时候,我们就加载类 型一的条目,当 id=2 的时候,加载类型二的条目。常见布局在资讯类客户端中 可以经常看到。 此之外 adapter 还提供了 getViewTypeCount()和 getItemViewType(int position)两个方法。在 getView 方法中我们可以根据不 同的 viewtype 加载不同的布局文件。
+
+######13、在ListView中设置Selector为null会报空指针？ 
+mListView.setSelector(null);//空指针 
+试试下面这个： 
+mListView.setSelector(new ColorDrawable(Color.TRANSPARENT));
+
+######14、ListView图片错位的问题是如何产生的？怎么解决？
+图片错位问题的本质源于我们的 listview 使用了缓存 convertView， 假设一种场景， 一个 listview一屏显示九个 item，那么在拉出第十个 item 的时候，事实上该 item 是重复使用了第一个 item，也就是说在第一个 item 从网络中下载图片并最终要显示的时候，其实该 item 已经不在当前显示区域内了，此时显示的后果将可能在第十个 item 上输出图像，这就导致了图片错位的问题。所以解决之道在于可见则显示，不可见则不显示。 
+如下：
+每次getView能给对象一个标识，在异步加载完成时比较标识与当前行item的标识是否一致，一致则显示，否则不做处理即可， 如下
+```
+// 给 ImageView 设置一个 tag
+holder.img.setTag(imgUrl);
+// 预设一个图片
+holder.img.setImageResource(R.drawable.ic_launcher);
+
+// 通过 tag 来防止图片错位
+if (imageView.getTag() != null &&imageView.getTag().equals(imageUrl)) {
+imageView.setImageBitmap(result);
+}
+```
+
+######15、ListView实现Item局部刷新？
+```
+private void updateView(int itemIndex) {
+          //得到第一个可显示控件的位置，
+          int visiblePosition = mListView.getFirstVisiblePosition();
+          //只有当要更新的view在可见的位置时才更新，不可见时，跳过不更新
+          if (itemIndex - visiblePosition >= 0) {
+              //得到要更新的item的view
+            View view = mListView.getChildAt(itemIndex - visiblePosition);
+              //调用adapter更新界面
+             mAdapter.updateView(view, itemIndex);
+        }
+     }
+```
+######16、ListView 中如何优化图片
+图片的优化策略比较多。
+* [处理图片的方式](http://www.jianshu.com/p/98c88f9ceafa)：
+如果 ListView 中自定义的 Item 中有涉及到大量图片的，一定要对图片进行细心的处理，因为图片占的内存是 ListView 项中最头疼的，处理图片的方法大致有以下几种：
+	* 不要直接拿路径就去循环 BitmapFactory.decodeFile;使用 Options 保存图片大小、不要加载图片到内存去。
+	* 对图片一定要经过边界压缩尤其是比较大的图片，如果你的图片是后台服务器处理好的那就
+不需要了
+	* 在 ListView 中取图片时也不要直接拿个路径去取图片，而是以 WeakReference（使用WeakReference 代替强引用。比如可以使用 WeakReference mContextRef）、SoftReference、WeakHashMap 等的来存储图片信息。
+	* 在 getView 中做图片转换时，产生的中间变量一定及时释放
+* 异步加载图片基本思想：
+1）、 先从内存缓存中获取图片显示（内存缓冲）
+2）、获取不到的话从 SD 卡里获取（SD 卡缓冲）
+3）、都获取不到的话从网络下载图片并保存到 SD 卡同时加入内存并显示（视情况看是否要显
+示）
+原理：
+优化一：先从内存中加载，没有则开启线程从 SD 卡或网络中获取，这里注意从 SD 卡获取图片是放在子线程里执行的，否则快速滑屏的话会不够流畅。
+优化二：于此同时，在 adapter 里有个 busy 变量，表示 listview 是否处于滑动状态，如果是滑动状态则仅从内存中获取图片，没有的话无需再开启线程去外存或网络获取图片。
+优化三：ImageLoader 里的线程使用了线程池，从而避免了过多线程频繁创建和销毁，如果每次总是 new 一个线程去执行这是非常不可取的，好一点的用的 AsyncTask 类，其实内部也是用到了线程池。在从网络获取图片时，先是将其保存到 sd 卡，然后再加载到内存，这么做的好处是在加载到内存时可以做个压缩处理，以减少图片所占内存。
 ================================================
 
 更多内容请关注 [ 我的专题 ](http://www.jianshu.com/collection/bcc2c1ba8378)
