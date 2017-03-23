@@ -103,25 +103,25 @@ Android作为一种移动设备，无论是内存还是CPU性能都会有一定�
 **响应速度的优化思想** 是避免在主线程中做耗时操作，可以把耗时操作放到子线程中执行，即采用异步处理。当程序anr时，系统会在/data/anr/目录下创建一个traces.txt，通过分析此文件从而获取造成anr的原因。导出此文件的方法：```adb pull /data/anr/traces.txt```
 
 ## 五、[列表优化](http://www.jianshu.com/p/b7741023bc6f)
-1、复用convertView，减少findViewById的次数
-2、避免在getView方法中做耗时操作
-3、采用ViewHolder模式缓存item条目的引用
-4、给listView设置滚动监听器 根据不同状态 不同处理数据 分批分页加载 根据listView的状态去操作，比如当列表快速滑动时不去开启大量的异步任务去请求图片
-5、listview每个item层级结构不要太复杂
-6、listview每个item中异步加载图片，并对图片加载做优化
-7、listview每个item中不要创建线程
-8、采用硬件加速来使ListView的滑动更流畅
+1、复用convertView，减少findViewById的次数   
+2、避免在getView方法中做耗时操作    
+3、采用ViewHolder模式缓存item条目的引用    
+4、给listView设置滚动监听器 根据不同状态 不同处理数据 分批分页加载 根据listView的状态去操作，比如当列表快速滑动时不去开启大量的异步任务去请求图片   
+5、listview每个item层级结构不要太复杂    
+6、listview每个item中异步加载图片，并对图片加载做优化    
+7、listview每个item中不要创建线程    
+8、采用硬件加速来使ListView的滑动更流畅    
 [更多列表内容](http://www.jianshu.com/p/b7741023bc6f)
 
 ## 六、[线程优化](http://www.jianshu.com/p/3da543063b8c)
 线程的优化思想是采用线程池，避免程序中出现大量的Thread，线程池可以重用内部的线程，从而避免了线程的创建和销毁带来的性能开销，同时线程池还能有效的控制线程的最大并发数，避免大量的线程因抢占系统资源从而导致线程阻塞的发生
 
 ## 七、[Bitmap优化](http://www.jianshu.com/p/98c88f9ceafa)
-[Android中的Bitmap](http://www.jianshu.com/p/98c88f9ceafa)
+[Android中的Bitmap](http://www.jianshu.com/p/98c88f9ceafa)    
 [Bitmap缓存策略](http://www.jianshu.com/p/635fceca82d3)
 
 ## 八、其他的一些性能优化建议
-1. 避免创建过多的对象
+1. 避免创建过多的对象  
 2. 不要过多的使用枚举，枚举占用的内存空间要比整型大
 3. 常量请使用static final来修饰
 4. 使用一些Android特有的数据结构，比如SparseArray和Pair等，他们都具有更好的性能
