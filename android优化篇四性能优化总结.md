@@ -132,3 +132,5 @@ Android作为一种移动设备，无论是内存还是CPU性能都会有一定�
 
 避免内存溢出参考文章：http://hukai.me/android-performance-oom/    
 推荐文章：https://realm.io/cn/news/droidcon-farber-improving-android-app-performance/
+
+![](http://upload-images.jianshu.io/upload_images/1479978-0ff1a43230b41689.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
