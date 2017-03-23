@@ -220,3 +220,6 @@ http://lipeng1667.github.io/2016/08/06/memory-optimisation-for-webview-in-androi
 在ListView与GridView等显示大量图片的控件里面需要使用[LRU的机制来缓存处理好的Bitmap](http://www.jianshu.com/p/635fceca82d3)
 * [避免在onDraw方法里面执行对象的创建](http://www.jianshu.com/p/ab15167c48da)
 * 善用 StringBuilder
+
+
+![](http://upload-images.jianshu.io/upload_images/1479978-0ff1a43230b41689.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
