@@ -304,3 +304,5 @@ private void updateView(int itemIndex) {
 
 更多内容请关注 [ 我的专题 ](http://www.jianshu.com/collection/bcc2c1ba8378)
 
+![](http://upload-images.jianshu.io/upload_images/1479978-0ff1a43230b41689.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
