@@ -1,4 +1,4 @@
-Android作为一种移动设备，无论是内存还是CPU性能都会有一定的限制，无法和PC设备相比拟，有鉴于此，Android程序不可能无限制的使用内存和CPU。**过多的使用内存会导致程序每寸溢出即OOM,而过多的使用CPU资源（比如做大量耗时任务）会导致手机变得卡顿甚至出现程序无响应（即ANR）的情况。**所以作为Androider，我们对性能优化的技能就尤为重要，这里主要从【布局优化】、【绘制优化】、【内存泄漏优化】、【响应速度优化】、【列表优化】、【Bitmap优化】、【线程优化】及等方面进行优化。
+Android作为一种移动设备，无论是内存还是CPU性能都会有一定的限制，无法和PC设备相比拟，有鉴于此，Android程序不可能无限制的使用内存和CPU。**过多的使用内存会导致程序每寸溢出即OOM,而过多的使用CPU资源（比如做大量耗时任务）会导致手机变得卡顿甚至出现程序无响应（即ANR）的情况。** 所以作为Androider，我们对性能优化的技能就尤为重要，这里主要从[【布局优化】、【绘制优化】](https://github.com/jasonLYF/jason-blog/blob/master/android%E4%BC%98%E5%8C%96%E7%AF%87%E4%B8%80%E5%B8%83%E5%B1%80%E5%8F%8A%E7%BB%98%E5%88%B6%E4%BC%98%E5%8C%96.md)、[【内存泄漏优化】](https://github.com/jasonLYF/jason-blog/blob/master/android%E4%BC%98%E5%8C%96%E7%AF%87%E4%BA%8C%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96.md)、【响应速度优化】、[【列表优化】](https://github.com/jasonLYF/jason-blog/blob/master/android%E4%BC%98%E5%8C%96%E7%AF%87%E4%B8%89ListView%E4%BC%98%E5%8C%96.md)、[【Bitmap优化】](http://www.jianshu.com/p/635fceca82d3)、[【线程优化】](http://www.jianshu.com/p/3da543063b8c) 等方面进行优化。
 
 ##一、布局优化
 1. 尽量保持布局层级的扁平化，避免出现重复的嵌套布局
