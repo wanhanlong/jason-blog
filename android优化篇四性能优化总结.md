@@ -52,12 +52,12 @@ Android作为一种移动设备，无论是内存还是CPU性能都会有一定�
 ###### 7、webview导致的内存泄漏优化
 请参考：http://lipeng1667.github.io/2016/08/06/memory-optimisation-for-webview-in-android/
 
-###### 8、其他一些导致内存泄漏的原因
-1、Bitmap对象使用完后，忘记了调用recycle()方法销毁；
-2、解析图片的时候忘记了设置采样率 详见下文
-3、[自定义View](http://www.jianshu.com/p/7468e038825a)时TypedArray使用完后忘记调用recycle()方法释放内存  
-4、ListView的适配器类中没有复用convertView
-5、未采用软引用等
+###### 8、其他一些导致内存泄漏的原因   
+1、Bitmap对象使用完后，忘记了调用recycle()方法销毁；   
+2、解析图片的时候忘记了设置采样率 详见下文    
+3、[自定义View](http://www.jianshu.com/p/7468e038825a)时TypedArray使用完后忘记调用recycle()方法释放内存     
+4、ListView的适配器类中没有复用convertView   
+5、未采用软引用等   
 * 软引用：
 如果一个对象只具有软引用，那么如果内存空间足够，垃圾回收器就不会回收它；如果内存 空间不足了，就会回收这些对象的内存。只要垃圾回收器没有回收它，该对象就可以被程序使用。软引用可用来实现内存敏感的高速缓存。软引用可以和一个引用队 列（ReferenceQueue）联合使用，如果软引用所引用的对象被垃圾回收，Java虚拟机就会把这个软引用加入到与之关联的引用队列中。
 * 弱引用：
