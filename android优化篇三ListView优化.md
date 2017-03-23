@@ -1,4 +1,4 @@
-####ListView怎么和ScrollView兼容？
+#### ListView怎么和ScrollView兼容？
 我们知道，有些时候我们需要在ListView外层嵌套一层ScrollView，代码如下：
 ```
     <ScrollView
@@ -165,7 +165,7 @@ public void setListViewHeightBasedOnChildren(ListView listView) {
 至此，关于“ListView怎么和ScrollView兼容”这个问题就算是回答完了，如果有不明白的地方可以问我，同样，那里有错误也欢迎大家指出，真的不胜感激。
 
 接下来要说的就是！！！！！
-####listview怎么优化？
+#### listview怎么优化？
 关于Listview的优化，只要面试过的人，我相信都对这个题很熟悉，不管有没有人问过你这个题，我想你自己也一定准备过，否则，嘿嘿！！！！！而且网上也一搜一大把这里就简单提几个主要的:
 1、复用convertView，对convetView进行判空，当convertView不为空时重复使用，为空则初始化，从而减少了很多不必要的View的创建、减少findViewById的次数，
 2、避免在getView方法中做耗时操作
@@ -180,34 +180,34 @@ public void setListViewHeightBasedOnChildren(ListView listView) {
 11、ListView 中元素避免半透明： 半透明绘制需要大量乘法计算，在滑动时不停重绘会造成大量的计算，在比较差的机子上会比较卡。 在设计上能不半透明就不不半透明。实在要弄就把在滑动的时候把半透明设置成不透明，滑动完再重新设置成半透明。
 
 下面就是关于Listview的一些相关拓展
-######1. 打开套有 ListVew的 ScrollView的页面布局 默认 起始位置不是最顶部？
+###### 1. 打开套有 ListVew的 ScrollView的页面布局 默认 起始位置不是最顶部？
 解决办法有两种：
  方法一：把套在里面的ListVew 不让获取焦点即可。listview.setFocusable(false);注意：在xml布局里面设置android：focusable=“false”不生效
 方法二：myScrollView.smoothScrollTo(0,0);
 
-######2. 上拉加载和下拉刷新怎么实现？
+###### 2. 上拉加载和下拉刷新怎么实现？
 实现OnScrollListener 接口重写onScrollStateChanged 和onScroll方法，
 使用onscroll方法实现”滑动“后处理检查是否还有新的记录，如果有，调用 addFooterView，添加记录到adapter, adapter调notifyDataSetChanged 更新数据;如果没有记录了，把自定义的mFooterView去掉。使用onScrollStateChanged可以检测是否滚到最后一行且停止滚动然后执行加载
 
-######3. listview失去焦点怎么处理？
+###### 3. listview失去焦点怎么处理？
 在listview子布局里面写，可以解决焦点失去的问题
 android:descendantFocusability="blocksDescendants"
 
-######4. ListView图片异步加载实现思路？
+###### 4. ListView图片异步加载实现思路？
 1.先从内存缓存中获取图片显示（内存缓冲） 
 2.获取不到的话从SD卡里获取（SD卡缓冲，，从SD卡获取图片是放在子线程里执行的，否则快速滑屏的话会不够流畅） 
 3.都获取不到的话从网络下载图片并保存到SD卡同时加入内存并显示（视情况看是否要显示）
 
-######5. 你知道Listview里有Button就点不动了你知道吗？
+###### 5. 你知道Listview里有Button就点不动了你知道吗？
 原因是button强制获取了item的焦点，只要设置button的focusable为false即可。
 
-######6. 如何自定义一个Adapter（有兴趣的可以看一下，大家不呀扔我鸡蛋）
+###### 6. 如何自定义一个Adapter（有兴趣的可以看一下，大家不呀扔我鸡蛋）
 继承自BaseAdapter实现里面的方法，listView在开始绘制的时候，系统首先调用getCount（）函数，根据他的返回值得到listView的长度，然后根据这个长度，调用getView（）逐一绘制每一行。如果你的getCount（）返回值是0的话，列表将不显示同样return 1，就只显示一行。系统显示列表时，首先实例化一个适配器（这里将实例化自定义的适配器）。当手动完成适配时，必 须手动映射数据，这需要重写getView（）方法。系统在绘制列表的每一行的时候将调用此方法。getView()有三个参数，position表示将显示的是第几行，covertView是从布局文件中inflate来的 布局。我们用LayoutInflater的方法将定义好的main.xml文件提取成View实例用来显示。
 然后 将xml文件中的各个组件实例化（简单的findViewById()方法）。这样便可以将数据对应到各个组件上了。但是按钮为了响应点击事件，需要为它添加点击监听器，这样就能捕获点击事件。至此一个自定 义的listView就完成了，现在让我们回过头从新审视这个过程。系统要绘制ListView了，
 他首先获得 要绘制的这个列表的长度，然后开始绘制第一行，怎么绘制呢？
 调用getView()函数。在这个函数里面 首先获得一个View（实际上是一个ViewGroup），然后再实例并设置各个组件，显示之。好了，绘制完这一行了。那 再绘制下一行，直到绘完为止。在实际的运行过程中会发现listView的每一行没有焦点了，这是因为Button抢夺了listView的焦点，只要布局文件中将Button设置为没有焦点就OK了。
 
-######7. listview分页加载的步骤？
+###### 7. listview分页加载的步骤？
 通常实现分页加载有两种方式，一种是在ListView底部设置一个按钮，用户点击即加载。另一种是当用户滑动到底部时自动加载。
 在ListView底部设置一个按钮，用户点击即加载实现思路:
 ```
@@ -233,24 +233,24 @@ android:descendantFocusability="blocksDescendants"
 当用户滑动到底部时自动加载实现思路: 
 实现OnScrollListener 接口重写onScrollStateChanged 和onScroll方法，使用onscroll方法实现”滑动“后处理检查是否还有新的记录，如果有,添加记录到adapter, adapter调用 notifyDataSetChanged 更新数据;如果没有记录了，则不再加载数据。使用onScrollStateChanged可以检测是否滚到最后一行且停止滚动然后执行加载.
 
-######8. ViewHolder内部类非得要声明成static的呢？
+###### 8. ViewHolder内部类非得要声明成static的呢？
 这不是Android的优化，而是Java提倡的优化，
 如果声明成员类不要求访问外围实例，就要始终把static修饰符放在它的声明中，使它成为静态成员类，而不是非静态成员类。
 因为非静态成员类的实例会包含一个额外的指向外围对象的引用，保存这份引用要消耗时间和空间，并且导致外围类实例符合垃圾回收时仍然被保留。如果没有外围实例的情况下，也需要分配实例，就不能使用非静态成员类，因为非静态成员类的实例必须要有一个外围实例。
 
-######9. [Listview每个item有特效进入视图](http://www.jianshu.com/p/6567b6dbb372)
-######10. [ScrollView、ListView剖析 - 上下拉伸回弹阻尼效果](http://www.jianshu.com/p/834e522d02dc)
-######11. [自定义控件-下拉刷新和上拉加载的listView](http://www.jianshu.com/p/cf4a77727d68)
+###### 9. [Listview每个item有特效进入视图](http://www.jianshu.com/p/6567b6dbb372)
+###### 10. [ScrollView、ListView剖析 - 上下拉伸回弹阻尼效果](http://www.jianshu.com/p/834e522d02dc)
+###### 11. [自定义控件-下拉刷新和上拉加载的listView](http://www.jianshu.com/p/cf4a77727d68)
 
-######12、ListView 如何显示多种类型的Item
+###### 12、ListView 如何显示多种类型的Item
 ListView 显示的每个条目都是通过 baseAdapter 的 getView(int position, View convertView, ViewGroup parent)来展示的,理 论上我们完全可以让每个条目都是不同类型的 view。 比如:从服务器拿回一个标识为 id=1,那么当 id=1 的时候,我们就加载类 型一的条目,当 id=2 的时候,加载类型二的条目。常见布局在资讯类客户端中 可以经常看到。 此之外 adapter 还提供了 getViewTypeCount()和 getItemViewType(int position)两个方法。在 getView 方法中我们可以根据不 同的 viewtype 加载不同的布局文件。
 
-######13、在ListView中设置Selector为null会报空指针？ 
+###### 13、在ListView中设置Selector为null会报空指针？ 
 mListView.setSelector(null);//空指针 
 试试下面这个： 
 mListView.setSelector(new ColorDrawable(Color.TRANSPARENT));
 
-######14、ListView图片错位的问题是如何产生的？怎么解决？
+###### 14、ListView图片错位的问题是如何产生的？怎么解决？
 图片错位问题的本质源于我们的 listview 使用了缓存 convertView， 假设一种场景， 一个 listview一屏显示九个 item，那么在拉出第十个 item 的时候，事实上该 item 是重复使用了第一个 item，也就是说在第一个 item 从网络中下载图片并最终要显示的时候，其实该 item 已经不在当前显示区域内了，此时显示的后果将可能在第十个 item 上输出图像，这就导致了图片错位的问题。所以解决之道在于可见则显示，不可见则不显示。 
 如下：
 每次getView能给对象一个标识，在异步加载完成时比较标识与当前行item的标识是否一致，一致则显示，否则不做处理即可， 如下
@@ -266,7 +266,7 @@ imageView.setImageBitmap(result);
 }
 ```
 
-######15、ListView实现Item局部刷新？
+###### 15、ListView实现Item局部刷新？
 ```
 private void updateView(int itemIndex) {
           //得到第一个可显示控件的位置，
@@ -280,7 +280,7 @@ private void updateView(int itemIndex) {
         }
      }
 ```
-######16、ListView 中如何优化图片
+###### 16、ListView 中如何优化图片
 图片的优化策略比较多。
 * [处理图片的方式](http://www.jianshu.com/p/98c88f9ceafa)：
 如果 ListView 中自定义的 Item 中有涉及到大量图片的，一定要对图片进行细心的处理，因为图片占的内存是 ListView 项中最头疼的，处理图片的方法大致有以下几种：
