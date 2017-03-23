@@ -199,7 +199,7 @@ http://lipeng1667.github.io/2016/08/06/memory-optimisation-for-webview-in-androi
 9、资源文件未关闭造成内存泄漏。最常见的是文件流执行完读写操作后，忘记关闭了输入流，输出流；数据库、Content Provider操作完后Cursor忘记了close等等。
 
 
-##内存溢出
+## 内存溢出
 **内存溢出：** 是指程序在申请内存时，没有足够的内存空间供其使用，出现out of memory；比如申请了一个integer,但给它存了long才能存下的数，那就是内存溢出。
 
 #### 如何避免内存溢出
