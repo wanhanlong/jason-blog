@@ -164,20 +164,22 @@ public void setListViewHeightBasedOnChildren(ListView listView) {
 
 至此，关于“ListView怎么和ScrollView兼容”这个问题就算是回答完了，如果有不明白的地方可以问我，同样，那里有错误也欢迎大家指出，真的不胜感激。
 
+ ------
+ 
 接下来要说的就是！！！！！
 #### listview怎么优化？
 关于Listview的优化，只要面试过的人，我相信都对这个题很熟悉，不管有没有人问过你这个题，我想你自己也一定准备过，否则，嘿嘿！！！！！而且网上也一搜一大把这里就简单提几个主要的:
-1、复用convertView，对convetView进行判空，当convertView不为空时重复使用，为空则初始化，从而减少了很多不必要的View的创建、减少findViewById的次数，
-2、避免在getView方法中做耗时操作
-3、采用ViewHolder模式缓存item条目的引用
-4、给listView设置滚动监听器 根据不同状态 不同处理数据 分批分页加载 根据listView的状态去操作，比如当列表快速滑动时不去开启大量的异步任务去请求图片
-5、listview每个item层级结构不要太复杂
-6、listview每个item中异步加载图片，并对图片加载做优化，（关于Listview分页加载和图片异步加载思路请看接下来的文章内容）
-7、listview每个item中不要创建线程
-8、尽量能保证 Adapter 的 hasStableIds() 返回 true 这样在 notifyDataSetChanged() 的时候，如果item内容并没有变化，ListView 将不会重新绘制这个 View，达到优化的目的
-9、在一些场景中，ScollView内会包含多个ListView，可以把listview的高度写死固定下来。 由于ScollView在快速滑动过程中需要大量计算每一个listview的高度，阻塞了UI线程导致卡顿现象出现，如果我们每一个item的高度都是均匀的，可以通过计算把listview的高度确定下来，避免卡顿现象出现
-10、使用 RecycleView 代替listview： 每个item内容的变动，listview都需要去调用notifyDataSetChanged来更新全部的item，太浪费性能了。RecycleView可以实现当个item的局部刷新，并且引入了增加和删除的动态效果，在性能上和定制上都有很大的改善
-11、ListView 中元素避免半透明： 半透明绘制需要大量乘法计算，在滑动时不停重绘会造成大量的计算，在比较差的机子上会比较卡。 在设计上能不半透明就不不半透明。实在要弄就把在滑动的时候把半透明设置成不透明，滑动完再重新设置成半透明。
+* 1、复用convertView，对convetView进行判空，当convertView不为空时重复使用，为空则初始化，从而减少了很多不必要的View的创建、减少findViewById的次数，  
+* 2、避免在getView方法中做耗时操作
+* 3、采用ViewHolder模式缓存item条目的引用
+* 4、给listView设置滚动监听器 根据不同状态 不同处理数据 分批分页加载 根据listView的状态去操作，比如当列表快速滑动时不去开启大量的异步任务去请求图片
+* 5、listview每个item层级结构不要太复杂
+* 6、listview每个item中异步加载图片，并对图片加载做优化，（关于Listview分页加载和图片异步加载思路请看接下来的文章内容）
+* 7、listview每个item中不要创建线程
+* 8、尽量能保证 Adapter 的 hasStableIds() 返回 true 这样在 notifyDataSetChanged() 的时候，如果item内容并没有变化，ListView 将不会重新绘制这个 View，达到优化的目的
+* 9、在一些场景中，ScollView内会包含多个ListView，可以把listview的高度写死固定下来。 由于ScollView在快速滑动过程中需要大量计算每一个listview的高度，阻塞了UI线程导致卡顿现象出现，如果我们每一个item的高度都是均匀的，可以通过计算把listview的高度确定下来，避免卡顿现象出现
+* 10、使用 RecycleView 代替listview： 每个item内容的变动，listview都需要去调用notifyDataSetChanged来更新全部的item，太浪费性能了。RecycleView可以实现当个item的局部刷新，并且引入了增加和删除的动态效果，在性能上和定制上都有很大的改善
+* 11、ListView 中元素避免半透明： 半透明绘制需要大量乘法计算，在滑动时不停重绘会造成大量的计算，在比较差的机子上会比较卡。 在设计上能不半透明就不不半透明。实在要弄就把在滑动的时候把半透明设置成不透明，滑动完再重新设置成半透明。
 
 下面就是关于Listview的一些相关拓展
 ###### 1. 打开套有 ListVew的 ScrollView的页面布局 默认 起始位置不是最顶部？
