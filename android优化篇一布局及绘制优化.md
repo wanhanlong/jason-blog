@@ -100,3 +100,5 @@ SurfaceView或TextureView可以通过将绘图操作移动到另一个单独线�
 更多内容请关注 [ 我的专题 ](http://www.jianshu.com/collection/bcc2c1ba8378)   
 转载请注明 [ 原文链接: ](http://www.jianshu.com/users/c1b4a5542220/latest_articles)
 http://www.jianshu.com/p/ab15167c48da
+
+![](http://upload-images.jianshu.io/upload_images/1479978-0ff1a43230b41689.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
