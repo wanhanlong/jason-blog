@@ -171,6 +171,6 @@ Glide一个牛叉的功能就是允许我们去加载Gif格式的图片，而且
 注意：Glide只可播放本地视频文件，不可播放网络文件。
 
 
-本篇文章就记录这些Glide的基础使用，下一篇记录它的更多功能。
-
+本篇文章就记录这些Glide的基础使用，下一篇记录它的更多功能。    
+下一篇 [ Glide 的 ViewTarget 和 GlideModule.applyOptions() ](https://github.com/jasonLYF/jason-blog/blob/master/Glide%20%E7%9A%84%20ViewTarget%20%E5%92%8C%20GlideModule.applyOptions().md)
 ![](http://upload-images.jianshu.io/upload_images/1479978-0ff1a43230b41689.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
