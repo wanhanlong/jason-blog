@@ -1,5 +1,6 @@
 
-[Glide源码](https://github.com/bumptech/glide)
+[Glide源码](https://github.com/bumptech/glide)   
+上一篇[ Glide的基础用法 ](https://github.com/jasonLYF/jason-blog/blob/master/Glide%E7%9A%84%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95.md)
 
 ### Glide load a Bitmap
 某些情况下，我们只是想从网络获取一个Bitmap，但是不会加载到View中，比如加载的控件类型不是ImageView，而是加载图片到自定义 view ，或者加载为Background的形式，或者要对load下来的Bitmap做特殊处理等。   
@@ -159,5 +160,6 @@ Bitmap 池用来允许不同尺寸的Bitmap被重用，这可以显著地减少�
 ```
 
 [star Github](https://github.com/jasonLYF/jason-blog)
+上一篇[ Glide的基础用法 ](https://github.com/jasonLYF/jason-blog/blob/master/Glide%E7%9A%84%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95.md)
 
 ![](http://upload-images.jianshu.io/upload_images/1479978-0ff1a43230b41689.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
