@@ -145,9 +145,8 @@ Bitmap 池用来允许不同尺寸的Bitmap被重用，这可以显著地减少�
         // 缓存目录，文件夹名称，缓存大小
         String downloadDirectoryPath = Environment.getDownloadCacheDirectory().getPath();
         builder.setDiskCache(new DiskLruCacheFactory(downloadDirectoryPath, "glideCache", cacheSize));
-    }
-
-        /**
+        
+         /**
          * 直接实现DiskCache.Factory接口
          */
         builder.setDiskCache(
@@ -157,6 +156,7 @@ Bitmap 池用来允许不同尺寸的Bitmap被重用，这可以显著地减少�
                         return DiskLruCacheWrapper.get(File directory, int maxSize);
                     }
                 });
+    }
 ```
 
 [star Github](https://github.com/jasonLYF/jason-blog)
